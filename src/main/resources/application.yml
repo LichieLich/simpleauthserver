@@ -6,6 +6,7 @@ spring:
     oauth2:
       authorizationserver:
         issuer-url: https://simpleauthserver.onrender.com
+#        issuer-url: https://localhost:7777
 #        issuer-url: http://127.0.0.1:9000
         # Client setup
 #        client:
@@ -25,3 +26,10 @@ spring:
 #              scopes:
 #                - openid
 #                - user
+
+logging:
+  level:
+    org:
+      springframework:
+        security: trace
+

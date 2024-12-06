@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
@@ -32,7 +33,7 @@ public class AuthorizationServerConfig {
     OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
     http.exceptionHandling(exceptions ->
         exceptions.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
-    );
+    ).csrf().disable().sessionManagement().maximumSessions(1).and().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
     return http.build();
   }
 
@@ -42,13 +43,13 @@ public class AuthorizationServerConfig {
         RegisteredClient.withId("io-portal")
             .clientName("ioportal")
             .clientId("io-portal")
-            .clientSecret("{noop}secret")
+            .clientSecret("secret")
             .redirectUri("http://localhost:8080/login/oauth2/code/ioportal")
-            .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
-            // .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+            .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+            .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
             .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
             .scope("user")
-            // .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+            .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
             .build()
     );
   }
