@@ -5,7 +5,7 @@ spring:
   security:
     oauth2:
       authorizationserver:
-        issuer-url: http://auth-server:80
+        issuer-url: https://simpleauthserver.onrender.com
 #        issuer-url: http://127.0.0.1:9000
         # Client setup
 #        client:
