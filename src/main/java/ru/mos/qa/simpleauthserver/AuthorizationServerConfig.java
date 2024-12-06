@@ -47,6 +47,7 @@ public class AuthorizationServerConfig {
             .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
             // .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
             .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+            .scope("user")
             // .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
             .build()
     );
