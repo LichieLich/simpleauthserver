@@ -1,0 +1,27 @@
+server:
+  port: 9000
+
+spring:
+  security:
+    oauth2:
+      authorizationserver:
+        issuer-url: http://auth-server:9000
+#        issuer-url: http://127.0.0.1:9000
+        # Client setup
+#        client:
+#          io-portal:
+#            registration:
+#              client-id: io-portal
+#              client-secret: "{noop}secret"
+#              client-name: ioportal
+#              client-authentication-methods:
+#                - client_secret_basic
+#              authorization-grant-types:
+#                - authorization_code
+#                - refresh_token
+#              redirect-uris:
+#                - http://127.0.0.1:8080/login/oauth2/code/ioportal
+#                - http://127.0.0.1:8080/authorized
+#              scopes:
+#                - openid
+#                - user
