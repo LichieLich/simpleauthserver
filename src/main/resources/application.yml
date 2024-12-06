@@ -1,11 +1,11 @@
 server:
-  port: 9000
+  port: 80
 
 spring:
   security:
     oauth2:
       authorizationserver:
-        issuer-url: http://auth-server:9000
+        issuer-url: http://auth-server:80
 #        issuer-url: http://127.0.0.1:9000
         # Client setup
 #        client:
